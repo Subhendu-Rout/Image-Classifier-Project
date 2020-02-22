@@ -75,7 +75,8 @@ def predict(image_path, model, topk=5, category_names='cat_to_name.json',
     image = process_image(image_path)
     img = torch.from_numpy(image).type(torch.FloatTensor)
     image = img.unsqueeze(0)
-    image = image.float().cuda()
+    #image = image.float().cuda()
+    image = image.float().to(device)
     model.eval()
     model.to(device)
     with torch.no_grad():
